@@ -95,6 +95,17 @@ public class Lambda3 {
         map.put("a", new Person(1, "tony"));
         Object person = map.computeIfAbsent("a",function);
         System.out.println(person);
+
+        Object person2 = map.computeIfAbsent("curry",function);
+        System.out.println(person2);
+
+    }
+
+    @Test
+    public void testFunction2() {
+
+        Function<String ,Person> function = name -> new Person(2,name);
+        HashMap map = new HashMap<String,Person>();
         Object person2 = map.computeIfAbsent("curry",function);
         System.out.println(person2);
 
@@ -195,6 +206,7 @@ public class Lambda3 {
     public void testOptional5() {
 
         Person person = new Person(1, "tony");
+
         String phone = Optional.ofNullable(person).flatMap(Person::getPhone).orElse("no phone");
     }
 
